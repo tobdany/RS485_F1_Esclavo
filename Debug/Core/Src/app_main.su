@@ -1,0 +1,7 @@
+../Core/Src/app_main.c:19:6:HAL_UART_RxCptlCallback	16	static
+../Core/Src/app_main.c:28:6:HAL_UART_txCptlCallback	16	static
+../Core/Src/app_main.c:32:6:HAL_UART_ErrorCallback	16	static
+../Core/Src/app_main.c:38:6:_rs485_set_mode	16	static
+../Core/Src/app_main.c:51:6:_rs485_write32	16	static
+../Core/Src/app_main.c:60:6:_rs485_init	8	static
+../Core/Src/app_main.c:76:6:app_main	8	static
