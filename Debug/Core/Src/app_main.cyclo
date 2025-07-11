@@ -5,4 +5,4 @@
 ../Core/Src/app_main.c:36:6:_rs485_set_mode	3
 ../Core/Src/app_main.c:47:6:_rs485_write32	1
 ../Core/Src/app_main.c:53:6:_rs485_init	1
-../Core/Src/app_main.c:59:6:app_main	6
+../Core/Src/app_main.c:59:6:app_main	5

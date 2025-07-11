@@ -61,18 +61,16 @@ void app_main(void) {
     _rs485_init();
     UART_SendString(&huart1, "ESCLAVO: Iniciando (ID ");
     char my_id_str[10];
-    sprintf(my_id_str, "%u)...\r\n", MY_SLAVE_ID);
+    sprintf(my_id_str, "%u) \r\n", MY_SLAVE_ID);
     UART_SendString(&huart1, my_id_str);
 
 
     Tick1000 = HAL_GetTick();
     while (1) {
-        // Solo responde cuando se le solicita.
-
-        // ESCLAVO: Procesar solicitud del Maestro
+       //Procesa solicitud del Maestro
         if (flagRx == 1) {
             flagRx = 0;
-            // HAL_Delay(50);
+            HAL_Delay(50);
             HAL_GPIO_WritePin(LED_RX_GPIO_Port, LED_RX_Pin, GPIO_PIN_RESET); // Apaga LED de RX
 
             char rx_str[50];
@@ -83,13 +81,16 @@ void app_main(void) {
                 Rs485_Conn = 1;
             }
 
-            if (rxValue == MY_SLAVE_ID) {
+            txvalue++;
+            _rs485_write32(txvalue);
+            UART_SendString(&huart1, "ESCLAVO: Respondiendo con mi contador.\r\n");
+            /*if (rxValue == MY_SLAVE_ID) {
                 txvalue++;
                 _rs485_write32(txvalue);
                 UART_SendString(&huart1, "ESCLAVO: Respondiendo con mi contador.\r\n");
             } else {
                  UART_SendString(&huart1, "ESCLAVO: Solicitud no para mi.\r\n");
-            }
+            } */
         }
 
         // Detectar si la comunicación cayó (timeout de recepción)
