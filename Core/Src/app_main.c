@@ -70,7 +70,6 @@ void app_main(void) {
        //Procesa solicitud del Maestro
         if (flagRx == 1) {
             flagRx = 0;
-            HAL_Delay(50);
             HAL_GPIO_WritePin(LED_RX_GPIO_Port, LED_RX_Pin, GPIO_PIN_RESET); // Apaga LED de RX
 
             char rx_str[50];
