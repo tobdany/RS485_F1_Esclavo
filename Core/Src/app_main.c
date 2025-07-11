@@ -17,7 +17,7 @@ void UART_SendString(UART_HandleTypeDef *huart, const char *str) {
 }
 
 //uart callbacks
-void HAL_UART_RxCptlCallback(UART_HandleTypeDef *huart) {
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
     ConnTimeOut = HAL_GetTick();
     flagRx = 1;
     HAL_GPIO_WritePin(LED_RX_GPIO_Port, LED_RX_Pin, GPIO_PIN_SET);
@@ -25,11 +25,11 @@ void HAL_UART_RxCptlCallback(UART_HandleTypeDef *huart) {
     HAL_UART_Receive_IT(huart, (uint8_t*)&rxValue_aux, sizeof(uint32_t));
 }
 
-void HAL_UART_txCptlCallback(UART_HandleTypeDef *huart) {
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
 }
 
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart) {
-    HAL_UART_Receive_IT(huart, (uint8_t*)&rxValue_aux, sizeof(uint32_t));
+	HAL_UART_Receive_IT(huart, (uint8_t*)&rxValue_aux, sizeof(uint32_t));
 }
 
 /*RS485*/
