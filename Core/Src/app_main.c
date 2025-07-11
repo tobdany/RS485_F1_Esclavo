@@ -17,9 +17,10 @@ void UART_SendString(UART_HandleTypeDef *huart, const char *str) {
 }
 
 //uart callbacks
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
     ConnTimeOut = HAL_GetTick();
-    flagRx = 1;
+    flagRx = 1; //avisa que recibió
     HAL_GPIO_WritePin(LED_RX_GPIO_Port, LED_RX_Pin, GPIO_PIN_SET);
     rxValue = rxValue_aux;
     HAL_UART_Receive_IT(huart, (uint8_t*)&rxValue_aux, sizeof(uint32_t));
