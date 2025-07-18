@@ -81,16 +81,14 @@ void app_main(void) {
                 Rs485_Conn = 1;
             }
 
-            txvalue++;
-            _rs485_write32(txvalue);
-            UART_SendString(&huart1, "ESCLAVO: Respondiendo con mi contador.\r\n");
-            /*if (rxValue == MY_SLAVE_ID) {
+
+            if (rxValue == MY_SLAVE_ID) {
                 txvalue++;
                 _rs485_write32(txvalue);
                 UART_SendString(&huart1, "ESCLAVO: Respondiendo con mi contador.\r\n");
             } else {
                  UART_SendString(&huart1, "ESCLAVO: Solicitud no para mi.\r\n");
-            } */
+            }
         }
 
         // Detectar si la comunicación cayó (timeout de recepción)
